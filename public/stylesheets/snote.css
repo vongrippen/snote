@@ -140,7 +140,7 @@ position:absolute;
     height: 17px !important;
     text-align: center;
 }
-
+#snote .share-private { background-color: #44CC88; }
 #snote .share:hover{background-color:#1A9B46;}
 
 #snote .new{float:left;margin:8px 0 0 10px;}

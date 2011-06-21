@@ -4,7 +4,7 @@
       = button_to I18n.t('note.delete'), {:action => 'destroy', :id => note.id}, :method => :delete, :class => 'links_button'
       = button_to I18n.t('note.edit'), {:action => 'edit', :id => note.id}, :method => :get, :class => 'links_button'
       - if note.private
-        = link_to I18n.t('note.share'), {:action => 'share', :id => note.id}, {:remote => true, :class => 'links_button share', :id => "share_#{note.id}"}
+        = link_to I18n.t('note.share'), {:action => 'share', :id => note.id}, {:remote => true, :class => 'links_button share share-private', :id => "share_#{note.id}"}
       - else
         = link_to I18n.t('note.share'), nil, {:class => 'links_button share', :id => "share_#{note.id}"}
 
