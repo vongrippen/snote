@@ -17,10 +17,9 @@
     %div{:id => "inline_note_#{note.id}"}
       <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
       %div
-        .share_title
-          Compartilhe a sua anotação:
+        .share_title= t('note.share_title')
         .share_options
-          Link público:
+          = t('note.link_public')+':'
           %a{:href => "#{post_note_url(:user => @username, :note_id => note.id)}", :class => "public_link", :target => "_blank"}
             = post_note_url(:user => @username, :note_id => note.id)
           .tweet_button

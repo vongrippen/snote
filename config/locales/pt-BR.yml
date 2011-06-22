@@ -22,6 +22,8 @@ pt-BR:
     not_found: "<div>Nenhuma anotação foi encontrada.</div><div><a href='/'><b>*Voltar*</b></a></div>"
     powered_by: "Criada por:"
     share: "Compartilhar"
+    share_title: "Compartilhe a sua anotação"
+    link_public: "Link público"
   format:
     title: "Formatando o texto"
     desc: "A formatação é feita com o %{textile_link}.<br>Possibilitando uma formatação simples, atráves de marcações fáceis."

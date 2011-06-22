@@ -22,6 +22,8 @@ en:
     not_found: "<div>Note not found.</div><div><a href='/'><b>*Back*</b></a></div>"
     powered_by: "Powerd by:"
     share: "Share"
+    share_title: "Share your note"
+    link_public: "Public link"
   format:
     title: "Formatting text"
     desc: "Text is formatted using %{textile_link} markup.<br>This makes it simple to apply formattings using an easy markup."
