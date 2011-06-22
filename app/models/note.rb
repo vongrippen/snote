@@ -19,7 +19,7 @@ class Note < ActiveRecord::Base
   def self.with_tag(tag, current_user_id)
     all(:conditions => ["tags.name LIKE ? AND notes.user_id = ?","%#{eval("tag")}%", current_user_id],
         :joins => "INNER JOIN taggings ON taggings.taggable_id = notes.id
-          INNER JOIN tags ON taggings.tag_id = tags.id")
+          INNER JOIN tags ON taggings.tag_id = tags.id",:group => 'notes.id')
   end
 
   def self.find_public_note(user_id, note_id)
