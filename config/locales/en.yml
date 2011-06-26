@@ -24,6 +24,7 @@ en:
     share: "Share"
     share_title: "Share your note"
     link_public: "Public link"
+    export: "Export"
   format:
     title: "Formatting text"
     desc: "Text is formatted using %{textile_link} markup.<br>This makes it simple to apply formattings using an easy markup."

@@ -2,7 +2,11 @@ Snote::Application.routes.draw do
   devise_for :users
 
   root :to => "notes#index"
-  resources :notes
+  resources :notes do
+    collection do
+      get :export
+    end
+  end
   match 'notes/example' => "notes#example"
   match 'notes/search' => "notes#search"
   match 'notes/share/:id' => "notes#share", :as => 'note_share'

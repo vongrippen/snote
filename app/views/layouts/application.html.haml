@@ -21,6 +21,8 @@
           - if current_user.email != 'demo@snote.com'
             = link_to I18n.t('user.edit_link'), edit_user_registration_path
             |
+          = link_to I18n.t('note.export'), export_notes_path(:format=>:yaml)
+          |
           = link_to I18n.t('logout'), destroy_user_session_path
 
       = yield

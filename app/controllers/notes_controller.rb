@@ -92,6 +92,21 @@ class NotesController < ApplicationController
   def example
   end
 
+  #Export all notes
+  def export
+      @notes = Note.find_my_notes(current_user.id)
+      export_items = {'notes' => @notes.collect do |note|
+        {'text' => note.text,
+        'created' => note.created_at,
+        'updated' => note.updated_at,
+        'tags' => note.tags.collect {|t| t.name }}
+      end }
+
+      respond_to do |format|
+        format.yaml { render :text => export_items.to_yaml }
+      end
+  end
+
 private
 
   def choose_layout
