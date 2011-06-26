@@ -6,7 +6,8 @@ Snote::Application.routes.draw do
   match 'notes/example' => "notes#example"
   match 'notes/search' => "notes#search"
   match 'notes/share/:id' => "notes#share", :as => 'note_share'
-  match "public/notes/:user/:note_id" => "notes#show", :as => 'post_note'
+  match "public/notes/:user/:note_id" => "notes#show"
+  match "u/:user/:note_id" => "notes#show", :as => 'post_note'
 
 end
 
