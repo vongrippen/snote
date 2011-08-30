@@ -1,5 +1,6 @@
 begin
   require 'RedCloth' unless defined? RedCloth
+  require 'coderay' unless defined? CodeRay
 rescue LoadError
   nil
 end

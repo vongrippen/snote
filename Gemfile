@@ -10,4 +10,5 @@ gem 'hpricot'
 gem 'ruby_parser'
 gem 'jquery-rails'
 gem 'rspec-rails'
+gem 'coderay'
 

@@ -21,6 +21,10 @@ module Err
               type = type.first
 
               if type.nil? && self[attribute]
+                self[attribute].gsub(/^@@@ ?(\w*)\r?\n(.+?)\r?\n@@@\r?$/m) do |match|
+                      lang = $1.empty? ? nil : $1
+                      "\n<notextile>" + CodeRay.scan($2, lang).div(:css => :class) + "</notextile>"
+                    end
                 textiled[attribute.to_s] ||= RedCloth.new(self[attribute], Array(ruled[attribute])).to_html 
               elsif type.nil? && self[attribute].nil?
                 nil
