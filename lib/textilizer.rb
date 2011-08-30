@@ -9,8 +9,8 @@ class Textilizer
   
   def formatted_text
     @text.gsub(/^@@@ ?(\w*)\r?\n(.+?)\r?\n@@@\r?$/m) do |match|
-      lang = $1.empty? ? nil : $1
-      "\n<notextile>" + CodeRay.scan($2, lang).div(:css => :class) + "</notextile>"
+      lang = $2.empty? ? nil : $1
+      "\n<notextile>" + CodeRay.scan($3, lang).div(:css => :class) + "</notextile>"
     end
   end
 end
