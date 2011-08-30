@@ -38,7 +38,6 @@ class NotesController < ApplicationController
 
   def edit
     @note = Note.find(params[:id])
-    @note.textiled = false
     redirect_to notes_path unless can_access?
   end
 
@@ -67,7 +66,6 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    @note.textiled = false
     @note.tag_list = params[:tags]
     respond_to do |format|
       if @note.update_attributes(params[:note])
