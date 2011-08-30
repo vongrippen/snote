@@ -4,7 +4,7 @@
     = t('note.not_found').html_safe
 - else
   .note
-    =raw @note.text
+		~ textilize @note.text
     .tags
       - @note.tags.each do |tag|
         %li

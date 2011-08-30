@@ -1,7 +1,6 @@
 class Note < ActiveRecord::Base
   belongs_to :user
   acts_as_taggable_on :tags
-  acts_as_textiled :text
   validates_presence_of :text
 
   def self.find_my_notes(current_user_id)
