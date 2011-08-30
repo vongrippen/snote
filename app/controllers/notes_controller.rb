@@ -52,7 +52,6 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(params[:note])
-    @note.textiled = false
     @note.tag_list = params[:tags]
     @note.user_id = current_user.id
     respond_to do |format|
