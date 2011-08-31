@@ -1,8 +1,9 @@
 - notes.each do |note|
   .note
     .buttons
-      = button_to I18n.t('note.delete'), {:action => 'destroy', :id => note.id}, :method => :delete, :class => 'links_button'
-      = button_to I18n.t('note.edit'), {:action => 'edit', :id => note.id}, :method => :get, :class => 'links_button'
+      - if current_user and note.user === current_user
+        = button_to I18n.t('note.delete'), {:action => 'destroy', :id => note.id}, :method => :delete, :class => 'links_button'
+        = button_to I18n.t('note.edit'), {:action => 'edit', :id => note.id}, :method => :get, :class => 'links_button'
       - if note.private
         = link_to I18n.t('note.share'), {:action => 'share', :id => note.id}, {:remote => true, :class => 'links_button share share-private', :id => "share_#{note.id}"}
       - else
@@ -20,11 +21,11 @@
         .share_title= t('note.share_title')
         .share_options
           = t('note.link_public')+':'
-          %a{:href => "#{post_note_url(:user => @username, :note_id => note.id)}", :class => "public_link", :target => "_blank"}
-            = post_note_url(:user => @username, :note_id => note.id)
+          %a{:href => "#{post_note_url(:user => note.user.username.downcase, :note_id => note.id)}", :class => "public_link", :target => "_blank"}
+            = post_note_url(:user => note.user.username.downcase, :note_id => note.id)
           .tweet_button
             %a{:href => "http://twitter.com/share", :class => "twitter-share-button",
-               "data-url" => "#{post_note_url(:user => @username, :note_id => note.id)}",
+               "data-url" => "#{post_note_url(:user => note.user.username.downcase, :note_id => note.id)}",
                "data-via" => "snote_app",
                "data-text" => "#{t('my_new_note')}",
                "data-count" => "none"}

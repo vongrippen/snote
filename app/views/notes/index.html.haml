@@ -1,5 +1,6 @@
-.new
-  = link_to I18n.t('note.new'), new_note_path, :class => 'links_button'
+- if current_user
+  .new
+    = link_to I18n.t('note.new'), new_note_path, :class => 'links_button'
 - if @notes.size > 0
   #search_bar
     - form_tag do

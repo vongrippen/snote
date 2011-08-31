@@ -21,6 +21,13 @@ class Note < ActiveRecord::Base
         :joins => "INNER JOIN taggings ON taggings.taggable_id = notes.id
           INNER JOIN tags ON taggings.tag_id = tags.id",:group => cols)
   end
+  
+  def self.public_with_tag(tag)
+    cols = self.column_names.collect {|c| "notes.#{c}"}.join(",") #Postgres fix
+    all(:conditions => ["tags.name LIKE ? AND notes.private = ?","%#{eval("tag")}%", false],
+        :joins => "INNER JOIN taggings ON taggings.taggable_id = notes.id
+          INNER JOIN tags ON taggings.tag_id = tags.id",:group => cols)
+  end
 
   def self.find_public_note(user_id, note_id)
     Note.all(:conditions => {:private => false, :user_id => user_id, :id => note_id}).first

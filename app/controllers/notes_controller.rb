@@ -1,18 +1,26 @@
 # coding: utf-8
 class NotesController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :update_username
   layout :choose_layout
 
   def index
     @search = params[:search]
     if @search.blank?
-      @notes = Note.find_my_notes(current_user.id)
+      if current_user
+        @notes = Note.find_my_notes(current_user.id)
+      else
+        @notes = Note.where(:private => false)
+      end
     else
-      @notes = Note.with_tag(@search, current_user.id)
+      if current_user
+        @notes = Note.with_tag(@search, current_user.id)
+      else
+        @notes = Note.public_with_tag(@search)
+      end
     end
-    @username = current_user.username.downcase
+    @username = current_user.username.downcase rescue nil
     @tags = Note.find_all_tags(@notes)
     respond_to do |format|
       format.js if request.xhr?
